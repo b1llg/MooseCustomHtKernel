@@ -20,6 +20,13 @@
       thermal_conductivity = 50   # W/m^3
     []
 []
+[Kernels]
+  [hgen]
+    type = ADHeatSource         # Custom Conduction Kernel ref: lib/kernels/ADHeatSource.h and src/kernels/ADHeatSource.C
+    variable = temperature      # Operate on the "temperature" variable above
+    heat_source = 75000    # W/m^3
+  []
+[]
 [BCs]
     [right]
       type = ADDirichletBC        # Simple u=value BC
