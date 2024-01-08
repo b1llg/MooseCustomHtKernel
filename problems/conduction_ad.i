@@ -1,32 +1,35 @@
 [Mesh]
     type = GeneratedMesh # Can generate simple lines, rectangles and rectangular prisms
     dim  = 2 # Dimension of the mesh
-    nx   = 8 # Number of elements in the x direction
-    ny   = 8 # Number of elements in the y direction
+    nx   = 10 # Number of elements in the x direction
+    ny   = 10 # Number of elements in the y direction
     xmax = 1.0 # m - width of box
     ymax = 1.0 # m - height of box
+    elem_type = QUAD9
 []
 [Variables]
     [temperature]
-      order = FIRST
+      order = SECOND
       family = LAGRANGE
     []
 []
 [Kernels]
     [conduction]
-      type = ADHeatTransferConduction # Zero-gravity, divergence-free form of Darcy's law
-      variable = temperature # Operate on the "pressure" variable from above
+      type = ADConduction #
+      variable = temperature # Operate on the "temperature" variable above
+      thermal_conductivity = 50
     []
+[]
 [BCs]
     [right]
       type = ADDirichletBC # Simple u=value BC
-      variable = pressure # Variable to be set
+      variable = temperature # Variable to be set
       boundary = left # Name of a sideset in the mesh
       value = 500 # degK
     []
     [left]
       type = ADDirichletBC
-      variable = pressure
+      variable = temperature
       boundary = right
       value = 273 # degK
     []

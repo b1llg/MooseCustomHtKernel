@@ -5,17 +5,18 @@
 /**
 *Compute compute the residual contribution: grad_test * k *grad_u
 */
-class ADHeatTransferConduction : public ADKernelGrad
+class ADConduction : public ADKernelGrad
 {
 public:
     static InputParameters validParams();
 
-    ADHeatTransferConduction(const InputParameters& parameters);
+    ADConduction(const InputParameters& parameters);
 
 protected:
     // ADKernel objects must override precompute QpResidual
     virtual ADRealVectorValue precomputeQpResidual() override;
 
+ 
     // Heat conduction parameters
     const Real _thermalConductivity;
-}
+};
