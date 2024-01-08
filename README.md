@@ -1,4 +1,4 @@
-MooseCustomHtKernel
+Moose Custom Heat Transfer Kernel
 =====
 
 Custom heat transfer kernel to solve the heat equation [^1]:
